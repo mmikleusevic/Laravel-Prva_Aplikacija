@@ -25,8 +25,4 @@ class DashboardController extends Controller
     {
         return view('dashboard');
     }
-
-    public function updateRole(Request $request){
-        echo $request->UserId;
-    }
 }

@@ -26,7 +26,6 @@ Route::get('/services', 'PagesController@services');
 
 Route::resource('posts', 'PostsController');
 
-
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index');
@@ -34,19 +33,17 @@ Route::get('/dashboard', 'DashboardController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/updateRole','DashboardController@updateRole');
 
 Route::group(['middleware' => ['web','auth']],function(){
     Route::get('/home', function(){
         return view('/home');
     });
-
     Route::get('/dashboard', function(){
-        if(Auth::user()->admin == 0){
-            return view('/home');
+        if(Auth::user()->user_role == "Admin"){
+            return view('/dashobard');
         }else{
             $users['users'] = \App\User::all();
-            return view('/dashboard', $users);
+            return view('/home', $users);
         }
     });
 

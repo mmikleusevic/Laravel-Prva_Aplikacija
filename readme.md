@@ -49,7 +49,3 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
-
-## Opaska
-
-Sve sam radio sa migracijama osim uloge kod korisnika, tj. da li je admin ili nije, shvatio sam da sam trebao to napraviti u dvije tablice sa vezama vise na vise, jer na ovaj nacin nisam uspio rijesiti zadatak do kraja.
