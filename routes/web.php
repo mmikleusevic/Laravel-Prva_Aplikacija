@@ -34,6 +34,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+// rute, zadatak za vježbu
+Route::get('/stranica', 'MyController@metodajedan');
+Route::get('/broj', 'MyController@metodadva');
+Route::get('/znamenka', 'MyController@metodatri');
+
+
+
 Route::group(['middleware' => ['web','auth']],function(){
     Route::get('/home', function(){
         return view('/home');
