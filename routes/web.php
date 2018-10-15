@@ -20,11 +20,7 @@ Route::get('/users/{id}/{name}', function($id,$name){
 */
 
 
-Route::get('/', 'PagesController@index');
-Route::get('/about', 'PagesController@about');
-Route::get('/services', 'PagesController@services');
-
-Route::resource('posts', 'PostsController');
+Route::get('/', 'HomeController@index' );
 
 Auth::routes();
 
@@ -41,18 +37,15 @@ Route::get('/broj', 'MyController@metodadva');
 Route::get('/znamenka', 'MyController@metodatri');
 
 
-
-Route::group(['middleware' => ['web','auth']],function(){
-    Route::get('/home', function(){
-        return view('/home');
-    });
-    Route::get('/dashboard', function(){
-        if(Auth::user()->user_role == "Admin"){
-            return view('/dashobard');
-        }else{
-            $users['users'] = \App\User::all();
-            return view('/home', $users);
-        }
-    });
-
-});
+Route::get('/dashboard',[
+    'uses'=> 'DashboardController@index',
+    'as' => 'Admin',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::post('/dashboard/store',[
+    'uses'=> 'DashboardController@assignRole',
+    'as' => 'store',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);

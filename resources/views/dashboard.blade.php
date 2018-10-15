@@ -20,16 +20,16 @@
                     <table class="table table-hover table-bordered">
                         <thead>
                             <tr>
-                                <th width="5">No.</th>
-                                <th>Member Name</th>
+                                <th width="5">Name</th>
+                                <th>Email</th>
                                 <th>User</th>
                                 <th>Admin</th>
                             </tr>
                         </thead>
                         <tbody>                    
-                            @foreach($users as $user)
+                        @foreach($users as $user)
                             <tr>
-                                <form action=submit method="post">
+                                <form action={{ route('store') }} method="POST">
                                     <td>{{ $user->name }}</td>                                
                                     <td>{{ $user->email }} <input type="hidden" name="email" value="{{ $user->email }}"></td>
                                     <td><input type="checkbox" {{ $user->hasRole('User') ? 'checked' : '' }} name="role_user"></td>                                    

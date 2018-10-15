@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading"><?php echo $txt = "Znamenka"?></div>
+                <div class="panel-heading">Ovo je {{ $txt }}</div>
             </div>
         </div>
     </div>
