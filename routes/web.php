@@ -10,41 +10,20 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-<<<<<<< HEAD
-=======
-/*
-Route::get('/hello', function () {
-    return '<h1>Hello World</h1>';
-});
-Route::get('/users/{id}/{name}', function($id,$name){
-    return 'This is user '.$name.' with an id of '.$id;
-});
-*/
-
-
-Route::get('/', 'HomeController@index' );
-
-Auth::routes();
->>>>>>> origin/master
-
 Route::get('/', 'HomeController@index' );
 
 Auth::routes();
 
+Route::group( [ 'middleware' => 'auth' ], function()
+{
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/dashboard', 'DashboardController@index')->middleware('auth');
+Route::get('/dashboard', 'DashboardController@index');
 
 // rute, zadatak za vježbu
-<<<<<<< HEAD
-Route::get('/stranica', 'MyController@metodajedan')->middleware('auth');
-Route::get('/broj', 'MyController@metodadva')->middleware('auth');
-Route::get('/znamenka', 'MyController@metodatri')->middleware('auth');
-=======
 Route::get('/stranica', 'MyController@metodajedan');
 Route::get('/broj', 'MyController@metodadva');
 Route::get('/znamenka', 'MyController@metodatri');
-
->>>>>>> origin/master
+});
 
 Route::get('/dashboard',[
     'uses'=> 'DashboardController@index',
@@ -52,7 +31,6 @@ Route::get('/dashboard',[
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]);
-<<<<<<< HEAD
 Route::post('/dashboard',[
     'uses'=> 'DashboardController@assignRole',
     'as' => 'dashboard',
@@ -65,11 +43,3 @@ Route::post('/dashboard',[
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]);
-=======
-Route::post('/dashboard/store',[
-    'uses'=> 'DashboardController@assignRole',
-    'as' => 'store',
-    'middleware' => 'roles',
-    'roles' => ['Admin']
-]);
->>>>>>> origin/master
