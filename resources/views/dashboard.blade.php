@@ -29,7 +29,11 @@
                         <tbody>                    
                         @foreach($users as $user)
                             <tr>
+<<<<<<< HEAD
                                 <form action="/dashboard" method="POST">
+=======
+                                <form action={{ route('store') }} method="POST">
+>>>>>>> origin/master
                                     <td>{{ $user->name }}</td>                                
                                     <td>{{ $user->email }} <input type="hidden" name="email" value="{{ $user->email }}"></td>
                                     <td><input type="checkbox" {{ $user->hasRole('User') ? 'checked' : '' }} name="role_user"></td>                                    
