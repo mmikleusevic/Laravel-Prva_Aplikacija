@@ -27,7 +27,10 @@ class DashboardController extends Controller
         $users = User::all();
         return view('dashboard',compact('users'));
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 63dbbcb... Revert "zavrsno"
     }
     public function assignRole(Request $request)
     {
@@ -39,6 +42,7 @@ class DashboardController extends Controller
         if($request['role_admin']){
             $user->roles()->attach(Role::where('name','Admin')->first());
         }
+<<<<<<< HEAD
         return redirect()->back;
 >>>>>>> origin/master
     }
@@ -52,6 +56,8 @@ class DashboardController extends Controller
         if($request['role_admin']){
             $user->roles()->attach(Role::where('name','Admin')->first());
         }
+=======
+>>>>>>> parent of 63dbbcb... Revert "zavrsno"
         return redirect('/dashboard');
     }
     public function storeUser()
