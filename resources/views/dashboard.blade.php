@@ -20,16 +20,16 @@
                     <table class="table table-hover table-bordered">
                         <thead>
                             <tr>
-                                <th width="5">Name</th>
-                                <th>Email</th>
+                                <th width="5">No.</th>
+                                <th>Member Name</th>
                                 <th>User</th>
                                 <th>Admin</th>
                             </tr>
                         </thead>
                         <tbody>                    
-                        @foreach($users as $user)
+                            @foreach($users as $user)
                             <tr>
-                                <form action="/dashboard/storeRole" method="POST">
+                                <form action=submit method="post">
                                     <td>{{ $user->name }}</td>                                
                                     <td>{{ $user->email }} <input type="hidden" name="email" value="{{ $user->email }}"></td>
                                     <td><input type="checkbox" {{ $user->hasRole('User') ? 'checked' : '' }} name="role_user"></td>                                    
@@ -39,26 +39,6 @@
                                 </form>
                             </tr>
                         @endforeach
-                        </tbody>
-                    </table>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th width="175px">Name</th>
-                                <th width="175px">Email</th>
-                                <th width="175px">Password</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <form action="/dashboard/storeUser"  method="POST">
-                                    <td><input type="text" name="Name"></td>                                
-                                    <td><input type="text" name="Email"></td>
-                                    <td><input type="password" name="password"></td>
-                                    {{ csrf_field() }}
-                                    <td><button type="submit">Submit</button></td>
-                                </form>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
