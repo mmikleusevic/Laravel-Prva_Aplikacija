@@ -31,21 +31,13 @@ Route::get('/dashboard',[
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]);
-<<<<<<< HEAD
-Route::post('/dashboard',[
-=======
 Route::post('/dashboard/storeRole',[
->>>>>>> parent of 63dbbcb... Revert "zavrsno"
     'uses'=> 'DashboardController@assignRole',
     'as' => 'dashboard',
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]);
-<<<<<<< HEAD
-Route::post('/dashboard',[
-=======
 Route::post('/dashboard/storeUser',[
->>>>>>> parent of 63dbbcb... Revert "zavrsno"
     'uses'=> 'DashboardController@storeUser',
     'as' => 'dashboard',
     'middleware' => 'roles',

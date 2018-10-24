@@ -29,15 +29,7 @@
                         <tbody>                    
                         @foreach($users as $user)
                             <tr>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                                <form action="/dashboard" method="POST">
-=======
-                                <form action={{ route('store') }} method="POST">
->>>>>>> origin/master
-=======
                                 <form action="/dashboard/storeRole" method="POST">
->>>>>>> parent of 63dbbcb... Revert "zavrsno"
                                     <td>{{ $user->name }}</td>                                
                                     <td>{{ $user->email }} <input type="hidden" name="email" value="{{ $user->email }}"></td>
                                     <td><input type="checkbox" {{ $user->hasRole('User') ? 'checked' : '' }} name="role_user"></td>                                    
@@ -59,11 +51,7 @@
                         </thead>
                         <tbody>
                             <tr>
-<<<<<<< HEAD
-                                <form action="/dashboard"  method="POST">
-=======
                                 <form action="/dashboard/storeUser"  method="POST">
->>>>>>> parent of 63dbbcb... Revert "zavrsno"
                                     <td><input type="text" name="Name"></td>                                
                                     <td><input type="text" name="Email"></td>
                                     <td><input type="password" name="password"></td>
