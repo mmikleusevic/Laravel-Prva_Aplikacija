@@ -18,16 +18,6 @@
 
               <div class="collapse navbar-collapse" id="app-navbar-collapse">
                   <!-- Left Side Of Navbar -->
-                  <ul class="nav navbar-nav">
-                      &nbsp;
-                  </ul>
-                      <ul class="nav navbar-nav">
-                      <li><a href="/">Home</a></li>                               
-                      <li><a href="/about">About</a></li>
-                      <li><a href="/services">Services</a></li>
-                      <li><a href="/posts">Blog</a></li>
-                  </ul>
-                      <!-- Right Side Of Navbar -->
                   <ul class="nav navbar-nav navbar-right">
                       <!-- Authentication Links -->
 
@@ -35,7 +25,6 @@
                           <li><a href="{{ route('login') }}">Login</a></li>
                           <li><a href="{{ route('register') }}">Register</a></li>
                       @else
-                        <li><a href="/posts/create">Create Post</a></li>
                           <li class="dropdown">          
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                   {{ Auth::user()->name }} <span class="caret"></span>

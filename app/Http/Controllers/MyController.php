@@ -9,14 +9,17 @@ class MyController extends Controller
 {
     public function metodajedan()
     {
-        return view('stranica');
+        $txt = "stranica";
+        return view('mojView.stranica',compact('txt'));
     }
     public function metodadva()
     {
-        return view('broj');
+        $txt = "broj";
+        return view('mojView.broj',compact('txt'));
     }
     public function metodatri()
     {
-        return view('znamenka');
+        $txt = "znamenka";
+        return view('mojView.znamenka',compact('txt'));
     }
 }
