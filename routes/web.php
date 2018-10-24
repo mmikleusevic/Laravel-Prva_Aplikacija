@@ -10,49 +10,36 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*
-Route::get('/hello', function () {
-    return '<h1>Hello World</h1>';
-});
-Route::get('/users/{id}/{name}', function($id,$name){
-    return 'This is user '.$name.' with an id of '.$id;
-});
-*/
-
-
-Route::get('/', 'PagesController@index');
-Route::get('/about', 'PagesController@about');
-Route::get('/services', 'PagesController@services');
-
-Route::resource('posts', 'PostsController');
+Route::get('/', 'HomeController@index' );
 
 Auth::routes();
 
-Route::get('/dashboard', 'DashboardController@index');
-
-Auth::routes();
-
+Route::group( [ 'middleware' => 'auth' ], function()
+{
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('/dashboard', 'DashboardController@index');
 
 // rute, zadatak za vježbu
 Route::get('/stranica', 'MyController@metodajedan');
 Route::get('/broj', 'MyController@metodadva');
 Route::get('/znamenka', 'MyController@metodatri');
-
-
-
-Route::group(['middleware' => ['web','auth']],function(){
-    Route::get('/home', function(){
-        return view('/home');
-    });
-    Route::get('/dashboard', function(){
-        if(Auth::user()->user_role == "Admin"){
-            return view('/dashobard');
-        }else{
-            $users['users'] = \App\User::all();
-            return view('/home', $users);
-        }
-    });
-
 });
+
+Route::get('/dashboard',[
+    'uses'=> 'DashboardController@index',
+    'as' => 'Admin',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::post('/dashboard',[
+    'uses'=> 'DashboardController@assignRole',
+    'as' => 'dashboard',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::post('/dashboard',[
+    'uses'=> 'DashboardController@storeUser',
+    'as' => 'dashboard',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
