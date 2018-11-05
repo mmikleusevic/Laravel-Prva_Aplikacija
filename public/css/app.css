@@ -7,7 +7,18 @@
  */
 
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
-
+DIV.table 
+{
+    display:table;
+}
+FORM.tr, DIV.tr
+{
+    display:table-row;
+}
+SPAN.td
+{
+    display:table-cell;
+}
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;

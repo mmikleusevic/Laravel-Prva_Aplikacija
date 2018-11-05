@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Role;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -39,21 +40,9 @@ class DashboardController extends Controller
         }
         return redirect('/dashboard');
     }
-    public function storeUser()
+    public function storeUser(Request $request)
 	{
-		$this->validate(request(), [
-
-			'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-
-		]);
-
-		auth()->user()->publish(
-    		new Post(request(['title','body','password']))
-    	);
-
-    	session()->flash('message', 'Your user has been added.');
+        User::create($request->all());
 
 		return redirect('/dashboard');
 	}
