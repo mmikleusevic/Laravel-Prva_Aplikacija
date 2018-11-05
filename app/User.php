@@ -10,6 +10,9 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password',
     ];
+    public function setPasswordAttribute($value){
+        $this->attributes['password'] = bcrypt($value);
+    }
     public function hasAnyRole($roles)
     {
         if (is_array($roles)) {

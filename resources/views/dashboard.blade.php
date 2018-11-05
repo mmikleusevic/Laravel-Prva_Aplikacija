@@ -17,50 +17,38 @@
                     <div class="alert alert-success">
                             <p>You are logged in as Administrator</p>
                     </div>
-                    <table class="table table-hover table-bordered">
-                        <thead>
-                            <tr>
-                                <th width="5">Name</th>
-                                <th>Email</th>
-                                <th>User</th>
-                                <th>Admin</th>
-                            </tr>
-                        </thead>
-                        <tbody>                    
-                        @foreach($users as $user)
-                            <tr>
-                                <form action="/dashboard/storeRole" method="POST">
-                                    <td>{{ $user->name }}</td>                                
-                                    <td>{{ $user->email }} <input type="hidden" name="email" value="{{ $user->email }}"></td>
-                                    <td><input type="checkbox" {{ $user->hasRole('User') ? 'checked' : '' }} name="role_user"></td>                                    
-                                    <td><input type="checkbox" {{ $user->hasRole('Admin') ? 'checked' : '' }} name="role_admin"></td>
+                    <div class="table">
+                            <div class="tr">
+                                <span class="td">Name</span>
+                                <span class="td">Email</span>
+                                <span class="td">User</span>
+                                <span class="td">Admin</span>
+                            </div>
+                            @foreach($users as $user)
+                            <form class="tr" method="POST" action="/dashboard/storeRole">
+                                <span class="td">{{ $user->name }}</span>
+                                <span class="td">{{ $user->email }} <input type="hidden" name="email" value="{{ $user->email }}"></span>
+                                <span class="td"><input type="checkbox" {{ $user->hasRole('User') ? 'checked' : '' }} name="role_user"></span>
+                                <span class="td"><input type="checkbox" {{ $user->hasRole('Admin') ? 'checked' : '' }} name="role_admin"></span>
+                                {{ csrf_field() }}
+                                <span class="td"><button type="submit">Assign Roles</button></span>
+                            </form>
+                            @endforeach
+                        </div>
+                        <div class="table">
+                                <div class="tr">
+                                    <span class="td">Name</span>
+                                    <span class="td">Email</span>
+                                    <span class="td">Password</span>
+                                </div>
+                                <form class="tr" method="POST" action="/dashboard/storeUser">
+                                    <span class="td"><input type="text" name="name"></span>
+                                    <span class="td"><input type="text" name="email"></span>
+                                    <span class="td"><input type="password" name="password"></span>
                                     {{ csrf_field() }}
-                                    <td><button type="submit">Assign Roles</button></td>
+                                    <span class="td"><button type="submit">Submit</button></span>
                                 </form>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th width="175px">Name</th>
-                                <th width="175px">Email</th>
-                                <th width="175px">Password</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <form action="/dashboard/storeUser"  method="POST">
-                                    <td><input type="text" name="Name"></td>                                
-                                    <td><input type="text" name="Email"></td>
-                                    <td><input type="password" name="password"></td>
-                                    {{ csrf_field() }}
-                                    <td><button type="submit">Submit</button></td>
-                                </form>
-                            </tr>
-                        </tbody>
-                    </table>
+                        </div>
                 </div>
             </div>
         </div>
