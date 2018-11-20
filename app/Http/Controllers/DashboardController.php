@@ -39,11 +39,10 @@ class DashboardController extends Controller
             $user->roles()->attach(Role::where('name','Admin')->first());
         }
         return redirect('/dashboard');
-    }
+        } 
     public function storeUser(Request $request)
 	{
         User::create($request->all());
-
 		return redirect('/dashboard');
 	}
 }

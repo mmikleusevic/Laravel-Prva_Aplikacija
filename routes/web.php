@@ -24,7 +24,6 @@ Route::get('/stranica', 'MyController@metodajedan');
 Route::get('/broj', 'MyController@metodadva');
 Route::get('/znamenka', 'MyController@metodatri');
 });
-
 Route::get('/dashboard',[
     'uses'=> 'DashboardController@index',
     'as' => 'Admin',
@@ -42,4 +41,16 @@ Route::post('/dashboard/storeUser',[
     'as' => 'dashboard',
     'middleware' => 'roles',
     'roles' => ['Admin']
+]);
+Route::get('/update',[
+    'uses'=> 'UpdateController@index',
+    'as' => 'update',
+    'middleware' => 'roles',
+    'roles' => ['Admin','User']
+]);
+Route::patch('/update/submitUpdate',[
+    'uses'=> 'UpdateController@update',
+    'as' => 'update',
+    'middleware' => 'roles',
+    'roles' => ['Admin','User']
 ]);
