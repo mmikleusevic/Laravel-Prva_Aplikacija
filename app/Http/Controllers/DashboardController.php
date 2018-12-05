@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use App\User;
 use App\Role;
 use Illuminate\Http\Request;
+
 
 class DashboardController extends Controller
 {
@@ -26,19 +27,20 @@ class DashboardController extends Controller
     public function index()
     {
         $users = User::all();
+        foreach($users as $user){
+
+        }
         return view('dashboard',compact('users'));
     }
     public function assignRole(Request $request)
     {
-        $user = User::where('email',$request['email'])->first();
-        $user->roles()->detach();
-        if($request['role_user']){
-            $user->roles()->attach(Role::where('name','User')->first());
-        }
-        if($request['role_admin']){
-            $user->roles()->attach(Role::where('name','Admin')->first());
-        }
-        return redirect('/dashboard');
+            $user_id=$request->input('user_id');
+            $role_id=$request->input('role_id');
+                $user = User::find($user_id);
+                $role = Role::find($role_id);
+                $user->roles()->detach();                    
+                $user->roles()->attach($role);
+                return redirect('/dashboard');
     }
     public function storeUser(Request $request)
 	{

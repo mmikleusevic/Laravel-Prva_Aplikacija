@@ -61,8 +61,7 @@ class UpdateController extends Controller
      */
     public function edit(Update $update)
     {
-        $user = Auth::user();
-        return view('mojView.update', compact('user'));
+        //
     }
 
     /**
@@ -74,14 +73,15 @@ class UpdateController extends Controller
      */
     public function update(Request $request, Update $update)
     {
-        $user = User::find(1);
+        $id = Auth::id();
+        $user = User::find($id);
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = $request->input('password');
         $user->last_name = $request->input('last_name');
         $user->phone = $request->input('phone');
         $user->save();
-        return redirect('/dashboard')->with('success', 'User updated');
+        return redirect('/update')->with('success', 'User updated');
     }
 
     /**
